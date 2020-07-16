@@ -1,0 +1,23 @@
+/* New CSS Manual */
+
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+form {
+
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px 0;
+    
+  }
