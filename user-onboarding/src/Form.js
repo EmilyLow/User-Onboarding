@@ -21,8 +21,7 @@ function Form() {
     const [errors, setErrors] = useState({...defaultState, terms: ""});
     const [buttonDisabled, setButtonDisabled] = useState(true);
 
-    //Question: Could you fill it in for only some of the form or would that mess things up?
-    //Also, this isn't really used anywhere in the example and that's confusing. Its defined but not used.
+    
     let formSchema = yup.object().shape({
         name: yup.string().required("Please enter your name."),
         email: yup.string().required("Please enter your email").email("This is not a valid email."),
@@ -35,14 +34,18 @@ function Form() {
     });
 
     useEffect(() => {
-       //Don't quite follow this
+        //Currently, its not reading a valid form as valid for checkbox. Its checking everything else fine.
+       
+       
         formSchema.isValid(formState).then(valid => {
+          
             setButtonDisabled(!valid);
         });
 
     }, [formState]);
 
-    //I'm unclear how this syncs up with the formSchema and things determined there, if it does at all. It seems like it's defining the problems seperately
+    
+   
     const inputChange = e => {
 
         e.persist();
@@ -62,11 +65,11 @@ function Form() {
             });
         });
 
-        //Why setting it again here?
-        setFormState({
-            ...formState,
-            [e.target.name]: e.target.value
-        });
+        //Why setting it again here? Getting rid of it
+        // setFormState({
+        //     ...formState,
+        //     [e.target.name]: e.target.value
+        // });
 
 
     };
@@ -80,9 +83,9 @@ function Form() {
         setFormState({
             ...formState, [e.target.name]: value
         });
-       
         
-        //check to make sure this is right b/c it might not be
+        
+        
         inputChange(e);
     };
    
@@ -140,10 +143,10 @@ function Form() {
                     <input
                         name="terms"
                         type="checkbox"
-                        checked={false}
+
                         onChange={handleChange} />
                 </label>
-            <button>Submit</button>
+            <button disabled={buttonDisabled}>Submit</button>
         </form>
 
 
