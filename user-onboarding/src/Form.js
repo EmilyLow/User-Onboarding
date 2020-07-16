@@ -20,6 +20,7 @@ function Form() {
     const [formState, setFormState] = useState(defaultState);
     const [errors, setErrors] = useState({...defaultState, terms: ""});
     const [buttonDisabled, setButtonDisabled] = useState(true);
+    const [post, setPost] = useState([]);
 
     
     let formSchema = yup.object().shape({
@@ -89,10 +90,19 @@ function Form() {
         inputChange(e);
     };
    
+    
 
     const submitData =  e => {
         e.preventDefault();
         console.log("Submitted");
+
+        axios
+        .post("https://reqres.in/api/users", formState)
+        .then(res => {
+            setPost(res.data);
+            console.log("Success", res);
+        })
+        .catch(err => console.log(err.response));
 
     };
 
