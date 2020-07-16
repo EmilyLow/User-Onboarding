@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 
-function Form() {
+function Form(props) {
 
    
     const defaultState = {
@@ -101,6 +101,10 @@ function Form() {
         .then(res => {
             setPost(res.data);
             console.log("Success", res);
+            
+            props.setUsers([...props.users, {name: res.data.name}]);
+           
+            
         })
         .catch(err => console.log(err.response));
 
@@ -158,7 +162,7 @@ function Form() {
                 </label>
             <button disabled={buttonDisabled}>Submit</button>
         </form>
-
+        <pre>{JSON.stringify(post, null, 2)}</pre>
 
 
     </div>
