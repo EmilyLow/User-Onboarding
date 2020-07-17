@@ -23,6 +23,7 @@ function Form(props) {
     const [post, setPost] = useState([]);
 
     
+    
     let formSchema = yup.object().shape({
         name: yup.string().required("Please enter your name."),
         email: yup.string().required("Please enter your email").email("This is not a valid email."),
@@ -145,7 +146,7 @@ function Form(props) {
                 <label>
                     Password:
                     <input
-                     type = "text"
+                     type = "password"
                      name="password"
                      value={formState.password}
                      onChange = {handleChange}
