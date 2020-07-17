@@ -129,6 +129,7 @@ function Form(props) {
                      name="name"
                      value={formState.name}
                      onChange = {handleChange}
+                     className = "name-field"
                      />
                      {errors.name.length > 0 ? (<p className="error">{errors.name}</p>) : null}
                 </label>
