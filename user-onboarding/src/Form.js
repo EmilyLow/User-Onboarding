@@ -141,6 +141,7 @@ function Form(props) {
                      name="email"
                      value={formState.email}
                      onChange = {handleChange}
+                     className = "email-field"
                      />
                      {errors.email.length > 0 ? (<p className="error">{errors.email}</p>) : null}
                 </label>
@@ -151,6 +152,7 @@ function Form(props) {
                      name="password"
                      value={formState.password}
                      onChange = {handleChange}
+                     className = "password-field"
                      />
                      {errors.password.length > 0 ? (<p className="error">{errors.password}</p>) : null}
                 </label>
@@ -159,6 +161,7 @@ function Form(props) {
                     <input
                         name="terms"
                         type="checkbox"
+                        className = "checkbox"
 
                         onChange={handleChange} />
                 </label>
